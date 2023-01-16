@@ -39,7 +39,7 @@ class CarsService {
     // a little better cause there steps to it that can be debugged cleaner
     let index = AppState.cars.findIndex(c => c.id == id)
     if (index >= 0) {
-      AppState.splice(index, 1)
+      AppState.cars.splice(index, 1)
     }
   }
 
