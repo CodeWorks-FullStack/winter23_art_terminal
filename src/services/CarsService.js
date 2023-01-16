@@ -21,12 +21,12 @@ class CarsService {
     const res = await api.post('api/cars', carData)
     logger.log('[createCar]', res.data)
     // NOTE push add to the end of the list, if you want to add to the start of the list use unshift
-    AppState.cars.push(res.data)
+    AppState.cars.push(new Car(res.data))
   }
 
   async editCar(carData) {
     logger.log(carData)
-    const res = await api.put('api/cars/' + carData.id, carData)
+    const res = await api.put('api/cars/' + id, carData)
     logger.log('[editCar]', res.data)
   }
 

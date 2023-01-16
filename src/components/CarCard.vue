@@ -21,7 +21,7 @@
 
 <script>
 import { AppState } from "../AppState";
-import { computed, reactive, onMounted } from "vue";
+import { computed } from "vue";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { carsService } from "../services/CarsService.js";
