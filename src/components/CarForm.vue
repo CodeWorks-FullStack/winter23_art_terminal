@@ -88,7 +88,7 @@
       <button
         class="btn w-100 rounded-pill selectable text-danger darken-20"
         type="button"
-        @click="editFalse()"
+        @click="editFalse"
       >
         Cancel
       </button>
@@ -104,7 +104,6 @@
 
 
 <script>
-import { AppState } from "../AppState";
 import { onMounted, ref } from "vue";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
@@ -148,10 +147,6 @@ export default {
       }
     }
 
-    function editFalse() {
-      emit("carEdited");
-      return;
-    }
     return {
       editable,
       async handleSubmit() {
@@ -160,6 +155,10 @@ export default {
         } else {
           await createCar();
         }
+      },
+
+      editFalse() {
+        emit("carEdited");
       },
     };
   },

@@ -25,11 +25,11 @@ import { computed } from "vue";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { carsService } from "../services/CarsService.js";
-import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 export default {
   props: { car: { type: Object, required: true } },
   setup(props) {
-    const router = useRouter();
+    const router = useRoute();
     return {
       account: computed(() => AppState.account),
       async removeCar() {
@@ -38,7 +38,7 @@ export default {
           // NOTE you can pass the id from the template OR
           // await carsService.removeCar(id)
           // NOTE you can pull it from props
-          await carsService.removeCar(props.car.id);
+          await carsService.removeCar(car.id);
         } catch (error) {
           Pop.error(error);
           logger.error(error);

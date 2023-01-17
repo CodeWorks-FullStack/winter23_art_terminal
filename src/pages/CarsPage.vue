@@ -9,7 +9,7 @@
 
     <div class="row">
       <div v-for="c in cars" :key="c.id" class="col-md-4 p-4">
-        <CarCard :car="c" />
+        <CarCard :cars="c" />
       </div>
     </div>
   </div>
@@ -32,9 +32,7 @@ export default {
         logger.log(error);
       }
     }
-    onMounted(() => {
-      getCars();
-    });
+    onMounted(() => {});
     return {
       cars: computed(() => AppState.cars),
     };
