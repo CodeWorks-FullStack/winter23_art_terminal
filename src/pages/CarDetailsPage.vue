@@ -11,13 +11,9 @@
       </div>
       <div class="col-6 d-flex flex-column justify-content-between">
         <p>{{ car.description }}</p>
-        <h3 class="bg-success p-2 text-dark rounded-pill">${{ car }}</h3>
+        <h3 class="bg-success p-2 text-dark rounded-pill">${{ car.price }}</h3>
       </div>
-      <button
-        v-if="car.creatorId == account.id"
-        class="btn btn-info"
-        @click="editMode = true"
-      >
+      <button v-if="car.creatorId == account.id" class="btn btn-info" @click="editMode = true">
         edit <i class="mdi mdi-pencil"></i>
       </button>
     </div>
@@ -67,5 +63,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

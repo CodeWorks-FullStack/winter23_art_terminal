@@ -2,94 +2,49 @@
   <form @submit.prevent="handleSubmit()" class="row justify-content-end">
     <div class="mb-3 col-3">
       <label for="" class="form-label">Make</label>
-      <input
-        type="text"
-        class="form-control"
-        v-model="editable.make"
-        name=""
-        id=""
-        aria-describedby="helpId"
-        placeholder=""
-      />
+      <input type="text" class="form-control" v-model="editable.make" name="" id="" aria-describedby="helpId"
+        placeholder="" />
       <small id="helpId" class="form-text text-muted">{{
         editable.make
       }}</small>
     </div>
     <div class="mb-3 col-3">
       <label for="" class="form-label">Model</label>
-      <input
-        type="text"
-        class="form-control"
-        v-model="editable.model"
-        name=""
-        id=""
-        aria-describedby="helpId"
-        placeholder=""
-      />
+      <input type="text" class="form-control" v-model="editable.model" name="" id="" aria-describedby="helpId"
+        placeholder="" />
       <small id="helpId" class="form-text text-muted">{{
         editable.model
       }}</small>
     </div>
     <div class="mb-3 col-3">
       <label for="" class="form-label">Year</label>
-      <input
-        type="number"
-        class="form-control"
-        v-model="editable.year"
-        name=""
-        id=""
-        aria-describedby="helpId"
-        placeholder=""
-      />
+      <input type="number" class="form-control" v-model="editable.year" name="" id="" aria-describedby="helpId"
+        placeholder="" />
       <small id="helpId" class="form-text text-muted">{{
         editable.year
       }}</small>
     </div>
     <div class="mb-3 col-3">
       <label for="" class="form-label">Price</label>
-      <input
-        type="number"
-        class="form-control"
-        v-model="editable.price"
-        name=""
-        id=""
-        aria-describedby="helpId"
-        placeholder=""
-      />
+      <input type="number" class="form-control" v-model="editable.price" name="" id="" aria-describedby="helpId"
+        placeholder="" />
       <small id="helpId" class="form-text text-muted">{{
         editable.price
       }}</small>
     </div>
     <div class="mb-3 col-12">
       <label for="" class="form-label">ImgUrl</label>
-      <input
-        type="url"
-        class="form-control"
-        v-model="editable.imgUrl"
-        name=""
-        id=""
-        aria-describedby="helpId"
-        placeholder=""
-      />
+      <input type="url" class="form-control" v-model="editable.imgUrl" name="" id="" aria-describedby="helpId"
+        placeholder="" />
       <img :src="editable.imgUrl" class="img-fluid" alt="" />
     </div>
     <div class="mb-3 col-12">
       <label for="" class="form-label">Description</label>
-      <textarea
-        name=""
-        id=""
-        class="form-control"
-        v-model="editable.description"
-        rows="3"
-      ></textarea>
+      <textarea name="" id="" class="form-control" v-model="editable.description" rows="3"></textarea>
       <small id="helpId" class="form-text text-muted">Help text</small>
     </div>
     <div class="mb-3 col-4">
-      <button
-        class="btn w-100 rounded-pill selectable text-danger darken-20"
-        type="button"
-        @click="editFalse"
-      >
+      <button class="btn w-100 rounded-pill selectable text-danger darken-20" type="button" @click="editFalse">
         Cancel
       </button>
     </div>
@@ -122,8 +77,8 @@ export default {
     async function createCar() {
       try {
         // NOTE if using ref in setup, you must access the value
-        // await carsService.createCar(editable.value)
-        await carsService.createCar(editable);
+
+        await carsService.createCar(editable.value);
         editable.value = {};
         Pop.toast("created Car", "success");
       } catch (error) {
@@ -135,8 +90,8 @@ export default {
     async function editCar() {
       try {
         // NOTE if using ref in setup, you must access the value
-        // await carsService.createCar(editable.value)
-        await carsService.editCar(edit.value);
+
+        await carsService.editCar(editable.value);
         // editable.value = {}
         Pop.toast("edited Car", "success");
         // NOTE emit tells the parent this event has happened
@@ -166,5 +121,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

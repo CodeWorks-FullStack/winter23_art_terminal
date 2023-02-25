@@ -4,11 +4,8 @@
     <h5>{{ car.make }} | {{ car.model }} | {{ car.year }}</h5>
     <h5>${{ car.price }}</h5>
     <div class="p-2 text-start">{{ car.description }}</div>
-    <button
-      v-if="car.creatorId == account.id"
-      @click.stop="removeCar(car.id)"
-      class="btn btn-danger delete-btn rounded-pill"
-    >
+    <button v-if="car.creatorId == account.id" @click.stop="removeCar(car.id)"
+      class="btn btn-danger delete-btn rounded-pill">
       <i class="px-2 mdi mdi-delete-forever"></i>
     </button>
     <div v-if="car.creator" class="creator text-end p-1">
@@ -25,20 +22,20 @@ import { computed } from "vue";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { carsService } from "../services/CarsService.js";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 export default {
   props: { car: { type: Object, required: true } },
   setup(props) {
-    const router = useRoute();
+    const router = useRouter();
     return {
       account: computed(() => AppState.account),
-      async removeCar() {
+      async removeCar(carId) {
         // note with props the id here is unused
         try {
           // NOTE you can pass the id from the template OR
           // await carsService.removeCar(id)
           // NOTE you can pull it from props
-          await carsService.removeCar(car.id);
+          await carsService.removeCar(carId);
         } catch (error) {
           Pop.error(error);
           logger.error(error);
@@ -73,7 +70,7 @@ export default {
   }
 
   img {
-    height: 15vh;
+    height: 35 vh;
     object-fit: cover;
   }
 
